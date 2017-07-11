@@ -1,6 +1,7 @@
 package tetrisAI;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -9,6 +10,10 @@ import javax.swing.Timer;
 
 
 public class TetrisBoard extends JComponent{
+	private enum Movements{
+		RIGHT, LEFT, UP, DOWN
+	}
+	ArrayList<Movements> moveQueue;
 	JFrame frame;
 	int x, y;
 	Timer t;
@@ -18,6 +23,7 @@ public class TetrisBoard extends JComponent{
 	public TetrisBoard(int x, int y){
 		this.x=x;
 		this.y=y;
+		moveQueue = new ArrayList<Movements>();
 		frame = new JFrame("Tetris");
 		frame.add(this);
 		frame.pack();
@@ -27,23 +33,24 @@ public class TetrisBoard extends JComponent{
 	public Dimension getPreferredSize(){
 		return new Dimension(x,y);
 	}
-	public void setVisible(boolean vis){
+	public void setFrameVisible(boolean vis){
 		frame.setVisible(vis);
 	}
 	public void leftPress(){
-		
+		moveQueue.add(Movements.LEFT);
 	}
 	public void rightPress(){
-		
+		moveQueue.add(Movements.RIGHT);
 	}
 	public void upPress(){
-		
+		moveQueue.add(Movements.UP);
+
 	}
 	public void downPress(){
-		
+		moveQueue.add(Movements.DOWN);
 	}
 	public void spacePress(){
-		
+
 	}
 	
 }
