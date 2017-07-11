@@ -1,15 +1,15 @@
 package tetrisAI;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-
-
-public class TetrisBoard extends JComponent{
+public class TetrisBoard extends JComponent implements ActionListener{
 	private enum Movements{
 		RIGHT, LEFT, UP, DOWN
 	}
@@ -27,6 +27,7 @@ public class TetrisBoard extends JComponent{
 		frame = new JFrame("Tetris");
 		frame.add(this);
 		frame.pack();
+		t = new Timer(20, this);
 		frame.addKeyListener(new TetrisListener(this));
 	}
 	@Override
@@ -51,6 +52,10 @@ public class TetrisBoard extends JComponent{
 	}
 	public void spacePress(){
 
+	}
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		
 	}
 	
 }
